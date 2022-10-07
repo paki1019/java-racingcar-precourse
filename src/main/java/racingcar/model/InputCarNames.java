@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class InputCarNames {
+	private static final String COMMA = ",";
+	private static final String EMPTY = "";
+
 	private final List<CarName> carNames;
 
 	private InputCarNames(String input) {
@@ -20,15 +23,18 @@ public class InputCarNames {
 
 	private List<CarName> convertCarNameList(String trimmedInput) {
 		List<CarName> list = new ArrayList<>();
-		for (String carName : trimmedInput.split(",")) {
+		for (String carName : trimmedInput.split(COMMA)) {
 			list.add(CarName.generate(carName));
 		}
 		return list;
 	}
 
-	private void validate(String input) {
-		if (input.isEmpty()) {
-			throw new IllegalArgumentException("자동차 이름 미입력");
+	private void validate(String trimmedInput) {
+		if (trimmedInput.isEmpty()) {
+			throw new IllegalArgumentException("경주할 자동차 이름을 입력해 주세요.");
+		}
+		if (trimmedInput.replace(COMMA, EMPTY).isEmpty()) {
+			throw new IllegalArgumentException("경주할 자동차 이름을 입력해 주세요.");
 		}
 	}
 
