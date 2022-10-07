@@ -1,10 +1,11 @@
 package racingcar.controller;
 
-import racingcar.model.InputCarNames;
+import racingcar.model.CarNames;
+import racingcar.view.InputCarNames;
 
 public class RacingCarController {
 
 	public void run() {
-		InputCarNames inputCarNames = new racingcar.view.InputCarNames().readCarNames();
+		CarNames carNames = new InputCarNames().readCarNames();
 	}
 }

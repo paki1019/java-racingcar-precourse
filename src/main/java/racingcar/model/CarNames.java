@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class InputCarNames {
+public class CarNames {
 	private static final String COMMA = ",";
 	private static final String EMPTY = "";
 
 	private final List<CarName> carNames;
 
-	private InputCarNames(String input) {
+	private CarNames(String input) {
 		String trimmedInput = input.trim();
 		validate(trimmedInput);
 		List<CarName> carNameList = convertCarNameList(trimmedInput);
 		this.carNames = Collections.unmodifiableList(carNameList);
 	}
 
-	public static InputCarNames generate(String input) {
-		return new InputCarNames(input);
+	public static CarNames generate(String input) {
+		return new CarNames(input);
 	}
 
 	private List<CarName> convertCarNameList(String trimmedInput) {
