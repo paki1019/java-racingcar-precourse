@@ -8,7 +8,7 @@ import racingcar.view.InputRounds;
 public class RacingCarController {
 
 	public void run() {
-		CarNames carNames = new InputCarNames().readCarNames();
-		Rounds rounds = new InputRounds().readRounds();
+		CarNames carNames = new InputCarNames().read();
+		Rounds rounds = new InputRounds().read();
 	}
 }

@@ -1,28 +1,15 @@
 package racingcar.view;
 
-import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.Rounds;
 
-public class InputRounds {
-	private Rounds rounds;
-	private boolean retry;
-
-	public Rounds readRounds() {
-		do {
-			tryReadRounds();
-		} while (retry);
-		return this.rounds;
+public class InputRounds extends InputRepeatable<Rounds> {
+	@Override
+	String message() {
+		return "시도할 횟수는 몇회인가요?";
 	}
 
-	private void tryReadRounds() {
-		try {
-			System.out.println("시도할 횟수는 몇회인가요?");
-			String input = Console.readLine();
-			this.rounds = Rounds.generate(input);
-			this.retry = false;
-		} catch (IllegalArgumentException e) {
-			System.out.println("[ERROR] " + e.getMessage());
-			this.retry = true;
-		}
+	@Override
+	Rounds generate(String input) {
+		return Rounds.generate(input);
 	}
 }
