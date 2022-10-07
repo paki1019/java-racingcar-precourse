@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.model.CarNames;
+import racingcar.model.InputCarNames;
 import racingcar.view.RacingCarView;
 
 public class RacingCarController {
@@ -11,6 +11,6 @@ public class RacingCarController {
 	}
 
 	public void run() {
-		CarNames carNames = racingCarView.InputCarNames();
+		InputCarNames inputCarNames = racingCarView.InputCarNames();
 	}
 }

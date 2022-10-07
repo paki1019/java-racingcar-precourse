@@ -5,8 +5,9 @@ public class CarName {
 	private final String carName;
 
 	private CarName(String carName) {
-		validate(carName);
-		this.carName = carName;
+		String trimmedCarName = carName.trim();
+		validate(trimmedCarName);
+		this.carName = trimmedCarName;
 	}
 
 	public static CarName generate(String carName) {
@@ -18,8 +19,12 @@ public class CarName {
 			throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
 		}
 
-		if (carName.trim().isEmpty()) {
+		if (carName.isEmpty()) {
 			throw new IllegalArgumentException("자동차 이름이 공백일 수는 없습니다.");
 		}
+	}
+
+	public String getCarName() {
+		return carName;
 	}
 }
