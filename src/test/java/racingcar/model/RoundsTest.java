@@ -23,7 +23,7 @@ class RoundsTest {
 	void generate_not_number(String input) {
 		assertThatThrownBy(() -> Rounds.generate(input))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("시도 횟수는 숫자여야 합니다.");
+			.hasMessage("시도 횟수는 1 ~ 2,147,483,647의 숫자여야 합니다.");
 	}
 
 	@DisplayName("시도할 횟수 문자열 입력 - 0")
@@ -32,7 +32,7 @@ class RoundsTest {
 	void generate_zero(String input) {
 		assertThatThrownBy(() -> Rounds.generate(input))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("시도 횟수는 양수여야 합니다.");
+			.hasMessage("시도 횟수는 1 ~ 2,147,483,647의 숫자여야 합니다.");
 	}
 
 	@DisplayName("시도할 횟수 문자열 입력 - 음수")
@@ -41,6 +41,15 @@ class RoundsTest {
 	void generate_negative(String input) {
 		assertThatThrownBy(() -> Rounds.generate(input))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("시도 횟수는 양수여야 합니다.");
+			.hasMessage("시도 횟수는 1 ~ 2,147,483,647의 숫자여야 합니다.");
+	}
+
+	@DisplayName("시도할 횟수 문자열 입력 - Integer 범위 초과")
+	@ParameterizedTest
+	@ValueSource(strings = {"2147483648"})
+	void generate_out_of_integer(String input) {
+		assertThatThrownBy(() -> Rounds.generate(input))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("시도 횟수는 1 ~ 2,147,483,647의 숫자여야 합니다.");
 	}
 }
