@@ -11,6 +11,6 @@ public class RacingCarController {
 	}
 
 	public void run() {
-		InputCarNames inputCarNames = racingCarView.InputCarNames();
+		InputCarNames inputCarNames = racingCarView.inputCarNames();
 	}
 }
