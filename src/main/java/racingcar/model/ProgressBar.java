@@ -12,8 +12,8 @@ public class ProgressBar {
 		this.progressBar = stringBuilder.toString();
 	}
 
-	public static ProgressBar generate(int i) {
-		return new ProgressBar(i);
+	public static ProgressBar from(Progress progress) {
+		return new ProgressBar(progress.getProgress());
 	}
 
 	private void validate(int progress) {
