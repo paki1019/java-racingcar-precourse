@@ -2,7 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public abstract class InputRepeatable<T> {
+public abstract class Input<T> {
 	private T target;
 	private boolean retry;
 
