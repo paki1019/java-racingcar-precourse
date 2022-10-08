@@ -2,11 +2,11 @@ package racingcar.model;
 
 public class RacingCarGame {
 	private final CarNames carNames;
-	private final Rounds rounds;
+	private final RoundCount roundCount;
 
-	public RacingCarGame(CarNames carNames, Rounds rounds) {
+	public RacingCarGame(CarNames carNames, RoundCount roundCount) {
 		this.carNames = carNames;
-		this.rounds = rounds;
+		this.roundCount = roundCount;
 	}
 
 	public GameResult play() {
