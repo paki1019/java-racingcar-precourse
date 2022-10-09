@@ -31,7 +31,6 @@ public class RacingCarGame {
 			Progress nowProgress = currentGameScore.getOrDefault(carName, Progress.from(ZERO));
 			currentGameScore.put(carName, nowProgress.tryForward());
 		});
-
-		return RoundResult.from(currentGameScore);
+		return RoundResult.from(new HashMap<>(currentGameScore));
 	}
 }

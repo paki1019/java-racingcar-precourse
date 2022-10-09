@@ -1,23 +1,19 @@
 package racingcar.model;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class RoundResult {
-	private final Map<CarName, ProgressBar> map;
+	private final Map<CarName, Progress> map;
 
-	private RoundResult(Map<CarName, ProgressBar> map) {
+	private RoundResult(Map<CarName, Progress> map) {
 		this.map = map;
 	}
 
 	public static RoundResult from(Map<CarName, Progress> currentGameScore) {
-		Map<CarName, ProgressBar> result = new HashMap<>();
-		currentGameScore.forEach((carName, progress) ->
-			result.put(carName, ProgressBar.from(progress)));
-		return new RoundResult(result);
+		return new RoundResult(currentGameScore);
 	}
 
-	public Map<CarName, ProgressBar> getMap() {
+	public Map<CarName, Progress> getMap() {
 		return map;
 	}
 }

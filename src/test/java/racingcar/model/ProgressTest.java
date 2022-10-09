@@ -16,7 +16,7 @@ class ProgressTest {
 	void progress(int count) {
 		Progress progress = Progress.from(count);
 		assertThat(progress).isNotNull();
-		assertThat(progress.getProgress()).isEqualTo(count);
+		assertThat(progress.getValue()).isEqualTo(count);
 	}
 
 	@DisplayName("진행도 - 음수")
@@ -35,5 +35,14 @@ class ProgressTest {
 		assertRandomNumberInRangeTest(
 			() -> assertThat(progress.tryForward()).isEqualTo(Progress.from(expected))
 			, givenRandomResult);
+	}
+
+	@DisplayName("진행도 - 진행바 노출")
+	@ParameterizedTest
+	@CsvSource(value = {"3:---", "5:-----", "0:''"}, delimiter = ':')
+	void getProgressBar(int value, String expected) {
+		Progress progress = Progress.from(value);
+		assertThat(progress.getProgressBar()).isNotNull();
+		assertThat(progress.getProgressBar()).isEqualTo(expected);
 	}
 }

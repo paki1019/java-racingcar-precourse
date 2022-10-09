@@ -10,11 +10,11 @@ public class Progress {
 	private static final int FORWARD_CONDITION = 4;
 	private static final int FORWARD_PROGRESS = 1;
 
-	private final int progress;
+	private final int value;
 
-	public Progress(int progress) {
-		validate(progress);
-		this.progress = progress;
+	public Progress(int value) {
+		validate(value);
+		this.value = value;
 	}
 
 	public static Progress from(int progress) {
@@ -27,16 +27,24 @@ public class Progress {
 		}
 	}
 
-	public int getProgress() {
-		return progress;
+	public int getValue() {
+		return value;
 	}
 
 	public Progress tryForward() {
 		int random = Randoms.pickNumberInRange(RANDOM_RANGE_START, RANDOM_RANGE_END);
 		if (random >= FORWARD_CONDITION) {
-			return new Progress(this.progress + FORWARD_PROGRESS);
+			return new Progress(this.value + FORWARD_PROGRESS);
 		}
 		return this;
+	}
+
+	public String getProgressBar() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < value; i++) {
+			stringBuilder.append("-");
+		}
+		return stringBuilder.toString();
 	}
 
 	@Override
@@ -45,12 +53,12 @@ public class Progress {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		Progress progress1 = (Progress)o;
-		return getProgress() == progress1.getProgress();
+		Progress progress = (Progress)o;
+		return getValue() == progress.getValue();
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getProgress());
+		return Objects.hash(getValue());
 	}
 }

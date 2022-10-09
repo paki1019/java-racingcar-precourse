@@ -22,8 +22,8 @@ public class OutputGameResult {
 
 	private void printRoundsResult(RoundResult roundResult) {
 		roundResult.getMap()
-			.forEach((carName, progressBar) ->
-				System.out.printf("%s : %s%n", carName.getCarName(), progressBar.getProgressBar()));
+			.forEach((carName, progress) ->
+				System.out.printf("%s : %s%n", carName.getCarName(), progress.getProgressBar()));
 		System.out.print("\n");
 	}
 
