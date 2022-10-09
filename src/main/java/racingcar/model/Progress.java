@@ -5,16 +5,20 @@ import java.util.Objects;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Progress {
+	private static final int PROGRESS_MIN = 0;
 	private static final int RANDOM_RANGE_START = 0;
 	private static final int RANDOM_RANGE_END = 9;
 	private static final int FORWARD_CONDITION = 4;
 	private static final int FORWARD_PROGRESS = 1;
-
 	private final int value;
 
-	public Progress(int value) {
+	private Progress(int value) {
 		validate(value);
 		this.value = value;
+	}
+
+	public static Progress begin() {
+		return new Progress(PROGRESS_MIN);
 	}
 
 	public static Progress from(int progress) {
@@ -22,8 +26,8 @@ public class Progress {
 	}
 
 	private void validate(int progress) {
-		if (progress < 0) {
-			throw new IllegalArgumentException();
+		if (progress < PROGRESS_MIN) {
+			throw new IllegalArgumentException("진행도는 0보다 작을 수 없습니다.");
 		}
 	}
 

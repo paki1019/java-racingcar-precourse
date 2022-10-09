@@ -12,13 +12,13 @@ public class Round {
 
 	public static Round start(CarNameList carNameList) {
 		Map<CarName, Progress> map = new HashMap<>();
-		carNameList.getList().forEach(carName -> map.put(carName, Progress.from(0)));
+		carNameList.getList().forEach(carName -> map.put(carName, Progress.begin()));
 		return new Round(map);
 	}
 
 	public Round next() {
 		Map<CarName, Progress> map = new HashMap<>();
-		map.forEach((carName, progress) -> map.put(carName, progress.tryForward()));
+		carNameProgress.forEach((carName, progress) -> map.put(carName, progress.tryForward()));
 		return new Round(map);
 	}
 
