@@ -1,9 +1,7 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Round {
@@ -31,18 +29,7 @@ public class Round {
 		return carNameProgress;
 	}
 
-	public FinalWinner getFinalWinner() {
-		Progress maxProgress = getMaxProgress();
-		List<CarName> carNameList = new ArrayList<>();
-		carNameProgress.forEach((carName, progress) -> {
-			if (progress == maxProgress) {
-				carNameList.add(carName);
-			}
-		});
-		return FinalWinner.from(carNameList);
-	}
-
-	private Progress getMaxProgress() {
+	public Progress getMaxProgress() {
 		return Collections.max(carNameProgress.values());
 	}
 }

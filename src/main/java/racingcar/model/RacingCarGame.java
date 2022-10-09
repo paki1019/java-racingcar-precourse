@@ -22,8 +22,8 @@ public class RacingCarGame {
 			roundList.add(this.currentRound);
 		}
 		RoundResult roundResult = RoundResult.from(roundList);
-		FinalWinner finalWinner = currentRound.getFinalWinner();
-		return GameResult.generate(roundResult, finalWinner);
+		WinnerList winnerList = WinnerList.from(currentRound);
+		return GameResult.generate(roundResult, winnerList);
 	}
 
 	private void playRound() {

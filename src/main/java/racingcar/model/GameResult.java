@@ -2,19 +2,19 @@ package racingcar.model;
 
 public class GameResult {
 	private final RoundResult roundResult;
-	private final FinalWinner finalWinner;
+	private final WinnerList winnerList;
 
-	private GameResult(RoundResult roundResult, FinalWinner finalWinner) {
+	private GameResult(RoundResult roundResult, WinnerList winnerList) {
 		this.roundResult = roundResult;
-		this.finalWinner = finalWinner;
+		this.winnerList = winnerList;
 	}
 
-	public static GameResult generate(RoundResult roundResult, FinalWinner finalWinner) {
-		return new GameResult(roundResult, finalWinner);
+	public static GameResult generate(RoundResult roundResult, WinnerList winnerList) {
+		return new GameResult(roundResult, winnerList);
 	}
 
 	public String getFinalWinnerResult() {
-		return finalWinner.getResultMessage();
+		return winnerList.getResultMessage();
 	}
 
 	public RoundResult getRoundResult() {
