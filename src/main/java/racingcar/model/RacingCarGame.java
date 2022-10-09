@@ -7,13 +7,13 @@ import java.util.Map;
 
 public class RacingCarGame {
 	private static final int ZERO = 0;
-	private final CarNames carNames;
+	private final CarNameList carNameList;
 	private final RoundCount roundCount;
 
 	private final Map<CarName, Progress> currentGameScore = new HashMap<>();
 
-	public RacingCarGame(CarNames carNames, RoundCount roundCount) {
-		this.carNames = carNames;
+	public RacingCarGame(CarNameList carNameList, RoundCount roundCount) {
+		this.carNameList = carNameList;
 		this.roundCount = roundCount;
 	}
 
@@ -27,7 +27,7 @@ public class RacingCarGame {
 	}
 
 	private RoundResult playRound() {
-		carNames.getCarNames().forEach(carName -> {
+		carNameList.getList().forEach(carName -> {
 			Progress nowProgress = currentGameScore.getOrDefault(carName, Progress.from(ZERO));
 			currentGameScore.put(carName, nowProgress.tryForward());
 		});

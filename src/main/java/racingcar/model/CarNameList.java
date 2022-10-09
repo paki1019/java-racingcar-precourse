@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CarNames {
+public class CarNameList {
 	private static final String COMMA = ",";
 	private static final String EMPTY = "";
 
-	private final List<CarName> carNames;
+	private final List<CarName> list;
 
-	private CarNames(String input) {
+	private CarNameList(String input) {
 		String trimmedInput = input.trim();
 		validate(trimmedInput);
 		List<CarName> carNameList = convertCarNameList(trimmedInput);
-		this.carNames = Collections.unmodifiableList(carNameList);
+		this.list = Collections.unmodifiableList(carNameList);
 	}
 
-	public static CarNames generate(String input) {
-		return new CarNames(input);
+	public static CarNameList from(String input) {
+		return new CarNameList(input);
 	}
 
 	private List<CarName> convertCarNameList(String trimmedInput) {
 		List<CarName> list = new ArrayList<>();
 		for (String carName : trimmedInput.split(COMMA)) {
-			list.add(CarName.generate(carName));
+			list.add(CarName.from(carName));
 		}
 		return list;
 	}
@@ -38,7 +38,7 @@ public class CarNames {
 		}
 	}
 
-	public List<CarName> getCarNames() {
-		return carNames;
+	public List<CarName> getList() {
+		return list;
 	}
 }

@@ -2,15 +2,15 @@ package racingcar.model;
 
 public class CarName {
 	private static final int CAR_NAME_MAX_LENGTH = 5;
-	private final String carName;
+	private final String value;
 
-	private CarName(String carName) {
-		String trimmedCarName = carName.trim();
-		validate(trimmedCarName);
-		this.carName = trimmedCarName;
+	private CarName(String value) {
+		String trimmed = value.trim();
+		validate(trimmed);
+		this.value = trimmed;
 	}
 
-	public static CarName generate(String carName) {
+	public static CarName from(String carName) {
 		return new CarName(carName);
 	}
 
@@ -24,7 +24,7 @@ public class CarName {
 		}
 	}
 
-	public String getCarName() {
-		return carName;
+	public String getValue() {
+		return value;
 	}
 }

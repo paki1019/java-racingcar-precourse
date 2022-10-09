@@ -10,17 +10,17 @@ class CarNameTest {
 	@DisplayName("자동차 이름 생성")
 	@ParameterizedTest
 	@ValueSource(strings = {"abcde", "12345"})
-	void generate_carName(String carName) {
-		CarName actual = CarName.generate(carName);
+	void carName(String carName) {
+		CarName actual = CarName.from(carName);
 		assertThat(actual).isNotNull();
-		assertThat(actual.getCarName()).isEqualTo(carName);
+		assertThat(actual.getValue()).isEqualTo(carName);
 	}
 
 	@DisplayName("자동차 이름 5자 초과")
 	@ParameterizedTest
 	@ValueSource(strings = {"abcdef", "asdhjsad", "     123434267657     "})
-	void generate_carName_over_5letters(String carName) {
-		assertThatThrownBy(() -> CarName.generate(carName))
+	void carName_over_5letters(String carName) {
+		assertThatThrownBy(() -> CarName.from(carName))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("자동차 이름은 5자 이하만 가능합니다.");
 	}
@@ -28,8 +28,8 @@ class CarNameTest {
 	@DisplayName("자동차 이름 공백")
 	@ParameterizedTest
 	@ValueSource(strings = {"", "  ", "     "})
-	void generate_carName_empty(String carName) {
-		assertThatThrownBy(() -> CarName.generate(carName))
+	void carName_empty(String carName) {
+		assertThatThrownBy(() -> CarName.from(carName))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("자동차 이름이 공백일 수는 없습니다.");
 	}
@@ -37,9 +37,9 @@ class CarNameTest {
 	@DisplayName("자동차 이름 좌우 공백 무시")
 	@ParameterizedTest
 	@ValueSource(strings = {"  abcde  ", " 12345 "})
-	void generate_carName_trim(String carName) {
-		CarName actual = CarName.generate(carName);
+	void carName_trim(String carName) {
+		CarName actual = CarName.from(carName);
 		assertThat(actual).isNotNull();
-		assertThat(actual.getCarName()).isEqualTo(carName.trim());
+		assertThat(actual.getValue()).isEqualTo(carName.trim());
 	}
 }
