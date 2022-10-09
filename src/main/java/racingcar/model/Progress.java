@@ -4,12 +4,13 @@ import java.util.Objects;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Progress {
+public class Progress implements Comparable<Progress> {
 	private static final int PROGRESS_MIN = 0;
 	private static final int RANDOM_RANGE_START = 0;
 	private static final int RANDOM_RANGE_END = 9;
 	private static final int FORWARD_CONDITION = 4;
 	private static final int FORWARD_PROGRESS = 1;
+	public static final String BAR_CHARACTER = "-";
 	private final int value;
 
 	private Progress(int value) {
@@ -46,7 +47,7 @@ public class Progress {
 	public String getProgressBar() {
 		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < value; i++) {
-			stringBuilder.append("-");
+			stringBuilder.append(BAR_CHARACTER);
 		}
 		return stringBuilder.toString();
 	}
@@ -64,5 +65,16 @@ public class Progress {
 	@Override
 	public int hashCode() {
 		return Objects.hash(getValue());
+	}
+
+	@Override
+	public int compareTo(Progress other) {
+		if (this.getValue() > other.getValue()) {
+			return 1;
+		}
+		if (this.getValue() < other.getValue()) {
+			return -1;
+		}
+		return 0;
 	}
 }

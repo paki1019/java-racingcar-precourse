@@ -16,7 +16,6 @@ class ApplicationTest extends NsTest {
 
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-    @Disabled
     @Test
     void 전진_정지() {
         assertRandomNumberInRangeTest(

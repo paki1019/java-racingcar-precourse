@@ -33,7 +33,7 @@ class RoundTest {
 
 		assertRandomNumberInRangeTest(
 			() -> {
-				Round nextRound = prevRound.next();
+				Round nextRound = prevRound.next(carNameList);
 				assertThat(nextRound).isNotNull();
 				assertThat(nextRound.getCarNameProgress()).isNotEmpty();
 				nextRound.getCarNameProgress()

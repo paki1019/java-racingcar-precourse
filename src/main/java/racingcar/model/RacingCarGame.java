@@ -22,15 +22,14 @@ public class RacingCarGame {
 			roundList.add(this.currentRound);
 		}
 		RoundResult roundResult = RoundResult.from(roundList);
-		FinalWinnerResult finalWinnerResult = new FinalWinnerResult();
-		return GameResult.generate(roundResult, finalWinnerResult);
+		FinalWinner finalWinner = currentRound.getFinalWinner();
+		return GameResult.generate(roundResult, finalWinner);
 	}
 
 	private void playRound() {
 		if (Objects.isNull(currentRound)) {
 			this.currentRound = Round.start(carNameList);
-			return;
 		}
-		this.currentRound = this.currentRound.next();
+		this.currentRound = this.currentRound.next(carNameList);
 	}
 }
