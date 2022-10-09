@@ -10,6 +10,6 @@ public class InputRoundCount extends Input<RoundCount> {
 
 	@Override
 	RoundCount generate(String input) {
-		return RoundCount.generate(input);
+		return RoundCount.from(input);
 	}
 }

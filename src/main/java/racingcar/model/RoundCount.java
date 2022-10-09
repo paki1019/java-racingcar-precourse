@@ -2,14 +2,14 @@ package racingcar.model;
 
 public class RoundCount {
 	private static final int ZERO = 0;
-	private final int roundCount;
+	private final int value;
 
 	private RoundCount(String input) {
 		validate(input);
-		this.roundCount = Integer.parseInt(input);
+		this.value = Integer.parseInt(input);
 	}
 
-	public static RoundCount generate(String input) {
+	public static RoundCount from(String input) {
 		return new RoundCount(input);
 	}
 
@@ -25,7 +25,7 @@ public class RoundCount {
 		}
 	}
 
-	public int getRoundCount() {
-		return roundCount;
+	public int getValue() {
+		return value;
 	}
 }

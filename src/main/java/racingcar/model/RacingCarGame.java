@@ -19,7 +19,7 @@ public class RacingCarGame {
 
 	public GameResult play() {
 		List<RoundResult> roundResultList = new ArrayList<>();
-		for (int i = 0; i < roundCount.getRoundCount(); i++) {
+		for (int i = 0; i < roundCount.getValue(); i++) {
 			roundResultList.add(playRound());
 		}
 		FinalWinnerResult finalWinnerResult = new FinalWinnerResult();
