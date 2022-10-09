@@ -1,16 +1,14 @@
 package racingcar.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 public class RacingCarGame {
-	private static final int ZERO = 0;
 	private final CarNameList carNameList;
 	private final RoundCount roundCount;
 
-	private final Map<CarName, Progress> currentGameScore = new HashMap<>();
+	private Round currentRound;
 
 	public RacingCarGame(CarNameList carNameList, RoundCount roundCount) {
 		this.carNameList = carNameList;
@@ -18,19 +16,21 @@ public class RacingCarGame {
 	}
 
 	public GameResult play() {
-		List<RoundResult> roundResultList = new ArrayList<>();
+		List<Round> roundList = new ArrayList<>();
 		for (int i = 0; i < roundCount.getValue(); i++) {
-			roundResultList.add(playRound());
+			playRound();
+			roundList.add(this.currentRound);
 		}
+		RoundResult roundResult = RoundResult.from(roundList);
 		FinalWinnerResult finalWinnerResult = new FinalWinnerResult();
-		return GameResult.generate(roundResultList, finalWinnerResult);
+		return GameResult.generate(roundResult, finalWinnerResult);
 	}
 
-	private RoundResult playRound() {
-		carNameList.getList().forEach(carName -> {
-			Progress nowProgress = currentGameScore.getOrDefault(carName, Progress.from(ZERO));
-			currentGameScore.put(carName, nowProgress.tryForward());
-		});
-		return RoundResult.from(new HashMap<>(currentGameScore));
+	private void playRound() {
+		if (Objects.isNull(currentRound)) {
+			this.currentRound = Round.start(carNameList);
+			return;
+		}
+		this.currentRound = this.currentRound.next();
 	}
 }

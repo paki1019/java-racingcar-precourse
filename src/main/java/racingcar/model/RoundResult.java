@@ -1,19 +1,19 @@
 package racingcar.model;
 
-import java.util.Map;
+import java.util.List;
 
 public class RoundResult {
-	private final Map<CarName, Progress> map;
+	private final List<Round> RoundList;
 
-	private RoundResult(Map<CarName, Progress> map) {
-		this.map = map;
+	private RoundResult(List<Round> RoundList) {
+		this.RoundList = RoundList;
 	}
 
-	public static RoundResult from(Map<CarName, Progress> currentGameScore) {
-		return new RoundResult(currentGameScore);
+	public static RoundResult from(List<Round> roundList) {
+		return new RoundResult(roundList);
 	}
 
-	public Map<CarName, Progress> getMap() {
-		return map;
+	public List<Round> getRoundList() {
+		return RoundList;
 	}
 }

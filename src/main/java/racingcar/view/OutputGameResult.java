@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.List;
 
 import racingcar.model.GameResult;
-import racingcar.model.RoundResult;
+import racingcar.model.Round;
 
 public class OutputGameResult {
 	public void print(GameResult gameResult) {
@@ -14,20 +14,20 @@ public class OutputGameResult {
 	}
 
 	private void printRoundsResultList(GameResult gameResult) {
-		List<RoundResult> roundResultList = gameResult.getRoundResultList();
-		for (RoundResult roundResult : roundResultList) {
-			printRoundsResult(roundResult);
+		List<Round> roundResultList = gameResult.getRoundResult().getRoundList();
+		for (Round round : roundResultList) {
+			printRoundResult(round);
 		}
 	}
 
-	private void printRoundsResult(RoundResult roundResult) {
-		roundResult.getMap()
+	private void printRoundResult(Round round) {
+		round.getCarNameProgress()
 			.forEach((carName, progress) ->
 				System.out.printf("%s : %s%n", carName.getValue(), progress.getProgressBar()));
 		System.out.print("\n");
 	}
 
 	private void printFinalWinnerResult(GameResult gameResult) {
-		System.out.println("최종 우승자 : " + gameResult.finalWinnerResult());
+		System.out.println("최종 우승자 : " + gameResult.getFinalWinnerResult());
 	}
 }

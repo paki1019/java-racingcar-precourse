@@ -14,6 +14,7 @@ class RacingCarGameTest {
 		RoundCount roundCount = RoundCount.from("3");
 		GameResult gameResult = new RacingCarGame(carNameList, roundCount).play();
 		assertThat(gameResult).isNotNull();
-		assertThat(gameResult.getRoundResultList()).hasSize(3);
+		assertThat(gameResult.getRoundResult()).isNotNull();
+		assertThat(gameResult.getRoundResult().getRoundList()).hasSize(3);
 	}
 }

@@ -1,25 +1,23 @@
 package racingcar.model;
 
-import java.util.List;
-
 public class GameResult {
-	private final List<RoundResult> roundResultList;
+	private final RoundResult roundResult;
 	private final FinalWinnerResult finalWinnerResult;
 
-	private GameResult(List<RoundResult> roundResultList, FinalWinnerResult finalWinnerResult) {
-		this.roundResultList = roundResultList;
+	private GameResult(RoundResult roundResult, FinalWinnerResult finalWinnerResult) {
+		this.roundResult = roundResult;
 		this.finalWinnerResult = finalWinnerResult;
 	}
 
-	public static GameResult generate(List<RoundResult> roundResultList, FinalWinnerResult finalWinnerResult) {
-		return new GameResult(roundResultList, finalWinnerResult);
+	public static GameResult generate(RoundResult roundResult, FinalWinnerResult finalWinnerResult) {
+		return new GameResult(roundResult, finalWinnerResult);
 	}
 
-	public String finalWinnerResult() {
-		return null;
+	public FinalWinnerResult getFinalWinnerResult() {
+		return finalWinnerResult;
 	}
 
-	public List<RoundResult> getRoundResultList() {
-		return roundResultList;
+	public RoundResult getRoundResult() {
+		return roundResult;
 	}
 }
