@@ -13,8 +13,7 @@ public class CarNameList {
 	private CarNameList(String input) {
 		String trimmedInput = input.trim();
 		validate(trimmedInput);
-		List<CarName> carNameList = convertCarNameList(trimmedInput);
-		this.list = Collections.unmodifiableList(carNameList);
+		this.list = convertCarNameList(trimmedInput);
 	}
 
 	public static CarNameList from(String input) {
@@ -39,6 +38,6 @@ public class CarNameList {
 	}
 
 	public List<CarName> getList() {
-		return list;
+		return Collections.unmodifiableList(list);
 	}
 }

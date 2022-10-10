@@ -1,25 +1,16 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerList {
-	private final List<CarName> carNameList = new ArrayList<>();
+	private final List<CarName> carNameList;
 
-	private WinnerList(Round round) {
-		Progress maxProgress = round.getMaxProgress();
-		round.getCarNameProgress().forEach(
-			(carName, progress) -> addWinnerCarName(maxProgress, carName, progress));
+	private WinnerList(List<CarName> carNameList) {
+		this.carNameList = carNameList;
 	}
 
-	public static WinnerList from(Round round) {
-		return new WinnerList(round);
-	}
-
-	private void addWinnerCarName(Progress maxProgress, CarName carName, Progress progress) {
-		if (progress.equals(maxProgress)) {
-			carNameList.add(carName);
-		}
+	public static WinnerList from(List<CarName> carNameList) {
+		return new WinnerList(carNameList);
 	}
 
 	public String getConcatNames() {

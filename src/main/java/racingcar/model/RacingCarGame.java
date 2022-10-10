@@ -16,14 +16,18 @@ public class RacingCarGame {
 	}
 
 	public GameResult play() {
+		RoundsResult roundsResult = playRounds();
+		WinnerList winnerList = selectWinner();
+		return GameResult.generate(roundsResult, winnerList);
+	}
+
+	private RoundsResult playRounds() {
 		List<Round> roundList = new ArrayList<>();
 		for (int i = 0; i < roundCount.getValue(); i++) {
 			playRound();
 			roundList.add(this.currentRound);
 		}
-		RoundResult roundResult = RoundResult.from(roundList);
-		WinnerList winnerList = WinnerList.from(currentRound);
-		return GameResult.generate(roundResult, winnerList);
+		return RoundsResult.from(roundList);
 	}
 
 	private void playRound() {
@@ -31,5 +35,19 @@ public class RacingCarGame {
 			this.currentRound = Round.start(carNameList);
 		}
 		this.currentRound = this.currentRound.next(carNameList);
+	}
+
+	private WinnerList selectWinner() {
+		Progress maxProgress = currentRound.getMaxProgress();
+		List<CarName> winnerList = new ArrayList<>();
+		currentRound.getCarNameProgress().forEach(
+			(carName, progress) -> addWinner(maxProgress, winnerList, carName, progress));
+		return WinnerList.from(winnerList);
+	}
+
+	private void addWinner(Progress maxProgress, List<CarName> winnerList, CarName carName, Progress progress) {
+		if (progress.equals(maxProgress)) {
+			winnerList.add(carName);
+		}
 	}
 }

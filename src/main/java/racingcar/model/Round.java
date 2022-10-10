@@ -8,7 +8,7 @@ public class Round {
 	private final Map<CarName, Progress> carNameProgress;
 
 	private Round(Map<CarName, Progress> carNameProgress) {
-		this.carNameProgress = Collections.unmodifiableMap(carNameProgress);
+		this.carNameProgress = carNameProgress;
 	}
 
 	public static Round start(CarNameList carNameList) {
@@ -26,7 +26,7 @@ public class Round {
 	}
 
 	public Map<CarName, Progress> getCarNameProgress() {
-		return carNameProgress;
+		return Collections.unmodifiableMap(carNameProgress);
 	}
 
 	public Progress getMaxProgress() {

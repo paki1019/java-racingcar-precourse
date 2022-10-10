@@ -1,23 +1,23 @@
 package racingcar.model;
 
 public class GameResult {
-	private final RoundResult roundResult;
+	private final RoundsResult roundsResult;
 	private final WinnerList winnerList;
 
-	private GameResult(RoundResult roundResult, WinnerList winnerList) {
-		this.roundResult = roundResult;
+	private GameResult(RoundsResult roundsResult, WinnerList winnerList) {
+		this.roundsResult = roundsResult;
 		this.winnerList = winnerList;
 	}
 
-	public static GameResult generate(RoundResult roundResult, WinnerList winnerList) {
-		return new GameResult(roundResult, winnerList);
+	public static GameResult generate(RoundsResult roundsResult, WinnerList winnerList) {
+		return new GameResult(roundsResult, winnerList);
 	}
 
 	public String getWinnerResultMessage() {
 		return winnerList.getConcatNames();
 	}
 
-	public RoundResult getRoundResult() {
-		return roundResult;
+	public RoundsResult getRoundResult() {
+		return roundsResult;
 	}
 }
