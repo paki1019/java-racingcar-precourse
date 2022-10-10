@@ -10,7 +10,7 @@ public class OutputGameResult {
 		System.out.print("\n");
 		System.out.println("실행 결과");
 		printRoundsResultList(gameResult);
-		printFinalWinnerResult(gameResult);
+		printWinnerResult(gameResult);
 	}
 
 	private void printRoundsResultList(GameResult gameResult) {
@@ -27,7 +27,7 @@ public class OutputGameResult {
 		System.out.print("\n");
 	}
 
-	private void printFinalWinnerResult(GameResult gameResult) {
-		System.out.println("최종 우승자 : " + gameResult.getFinalWinnerResult());
+	private void printWinnerResult(GameResult gameResult) {
+		System.out.println("최종 우승자 : " + gameResult.getWinnerResultMessage());
 	}
 }

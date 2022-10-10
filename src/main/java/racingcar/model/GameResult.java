@@ -13,8 +13,8 @@ public class GameResult {
 		return new GameResult(roundResult, winnerList);
 	}
 
-	public String getFinalWinnerResult() {
-		return winnerList.getResultMessage();
+	public String getWinnerResultMessage() {
+		return winnerList.getConcatNames();
 	}
 
 	public RoundResult getRoundResult() {

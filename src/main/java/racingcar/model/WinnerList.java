@@ -8,9 +8,8 @@ public class WinnerList {
 
 	private WinnerList(Round round) {
 		Progress maxProgress = round.getMaxProgress();
-		round.getCarNameProgress().forEach((carName, progress) -> {
-			addWinnerCarName(maxProgress, carName, progress);
-		});
+		round.getCarNameProgress().forEach(
+			(carName, progress) -> addWinnerCarName(maxProgress, carName, progress));
 	}
 
 	public static WinnerList from(Round round) {
@@ -18,16 +17,16 @@ public class WinnerList {
 	}
 
 	private void addWinnerCarName(Progress maxProgress, CarName carName, Progress progress) {
-		if (progress == maxProgress) {
+		if (progress.equals(maxProgress)) {
 			carNameList.add(carName);
 		}
 	}
 
-	public String getResultMessage() {
+	public String getConcatNames() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(carNameList.get(0).getValue());
 		for (int i = 1; i < carNameList.size(); i++) {
-			stringBuilder.append(carNameList.get(i).getValue());
+			stringBuilder.append(String.format(",%s", carNameList.get(i).getValue()));
 		}
 		return stringBuilder.toString();
 	}
